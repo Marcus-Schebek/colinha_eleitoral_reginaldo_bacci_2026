@@ -1,8 +1,11 @@
 {
   "name": "colinha-bacci-vercel",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "engines": {
     "node": "24.x"
+  },
+  "scripts": {
+    "build": "echo Static build - no compilation required"
   }
 }

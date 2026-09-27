@@ -1,20 +1,22 @@
-const TSE_IMAGE_BASE = 'https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img';
-const ELEICAO_ID = 20322002026;
-const REQUEST_TIMEOUT_MS = 15000;
+const fs = require('fs');
+const path = require('path');
 
-const TSE_HEADERS = {
-  Accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
-  Referer: 'https://divulgacandcontas.tse.jus.br/divulga/',
-  Origin: 'https://divulgacandcontas.tse.jus.br',
-  'User-Agent':
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-};
+const PHOTO_ROOTS = [
+  path.join(process.cwd(), 'public', 'fotos'),
+  path.join(process.cwd(), 'public', 'photos'),
+  path.join(process.cwd(), 'fotos'),
+  path.join(process.cwd(), 'photos'),
+];
+
+const EXTENSIONS = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
 
 function query(req) {
   if (req.query && typeof req.query === 'object') return req.query;
+
   const protocol = req.headers?.['x-forwarded-proto'] || 'http';
   const host = req.headers?.host || 'localhost';
   const parsed = new URL(req.url || '/', `${protocol}://${host}`);
+
   return Object.fromEntries(parsed.searchParams.entries());
 }
 
@@ -23,35 +25,59 @@ function normalize(value) {
 }
 
 function isSafeId(value) {
-  return /^[A-Za-z0-9_-]{1,80}$/.test(String(value || ''));
+  return /^[0-9A-Za-z_-]{1,80}$/.test(String(value || ''));
 }
 
-async function fetchTSE(url) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+/**
+ * LEIA-ME do TSE:
+ * UF + SQ_CANDIDATO + "_div" + extensão.
+ *
+ * Ex.: FRS210002537055_div.jpg
+ */
+function findPhotoFile(id, uf) {
+  const safeId = String(id || '').trim();
+  const safeUf = normalize(uf || 'RS');
 
-  try {
-    return await fetch(url, {
-      method: 'GET',
-      headers: TSE_HEADERS,
-      signal: controller.signal,
-    });
-  } finally {
-    clearTimeout(timer);
+  if (!isSafeId(safeId) || !/^[A-Z]{2}$/.test(safeUf)) {
+    return null;
+  }
+
+  const filenameBase = `F${safeUf}${safeId}_div`;
+
+  for (const root of PHOTO_ROOTS) {
+    for (const extension of EXTENSIONS) {
+      const file = path.join(root, `${filenameBase}.${extension}`);
+
+      if (fs.existsSync(file)) {
+        return file;
+      }
+    }
+  }
+
+  return null;
+}
+
+function contentType(file) {
+  switch (path.extname(file).toLowerCase()) {
+    case '.png':
+      return 'image/png';
+    case '.webp':
+      return 'image/webp';
+    case '.jpeg':
+    case '.jpg':
+    default:
+      return 'image/jpeg';
   }
 }
 
 module.exports = async function handler(req, res) {
-  const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
-    'Cache-Control': 'no-store, no-cache, must-revalidate',
-  };
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
 
-  Object.entries(corsHeaders).forEach(([key, value]) => res.setHeader(key, value));
-
-  if (req.method === 'OPTIONS') return res.status(204).end();
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
+  }
 
   if (req.method !== 'GET') {
     return res.status(405).send('Método não permitido.');
@@ -60,49 +86,28 @@ module.exports = async function handler(req, res) {
   const params = query(req);
   const id = String(params.id == null ? '' : params.id).trim();
   const uf = normalize(params.uf || 'RS');
-  const office = normalize(params.office);
 
   if (!id || !isSafeId(id)) {
     return res.status(400).send('ID de candidato inválido.');
   }
 
-  const municipio = office === 'PRESIDENTE' ? 'BR' : uf;
-
-  if (municipio !== 'RS' && municipio !== 'BR') {
-    return res.status(400).send('Localidade não suportada.');
+  if (!/^[A-Z]{2}$/.test(uf)) {
+    return res.status(400).send('UF inválida.');
   }
 
-  const tseUrl =
-    `${TSE_IMAGE_BASE}/${ELEICAO_ID}/` +
-    `${encodeURIComponent(id)}/${municipio}`;
+  const file = findPhotoFile(id, uf);
+
+  if (!file) {
+    res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=86400');
+    return res.status(404).send('Foto local não encontrada.');
+  }
 
   try {
-    console.log('[TSE FOTO] consultando:', tseUrl);
-
-    const response = await fetchTSE(tseUrl);
-
-    if (!response.ok) {
-      const body = await response.text().catch(() => '');
-      console.error('[TSE FOTO] HTTP', response.status, body.slice(0, 2000));
-
-      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-      return res.status(response.status).send(body || `TSE HTTP ${response.status}`);
-    }
-
-    const contentType = response.headers.get('content-type') || 'image/jpeg';
-    const arrayBuffer = await response.arrayBuffer();
-
-    res.setHeader('Content-Type', contentType);
-    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
-    return res.status(200).send(Buffer.from(arrayBuffer));
+    res.setHeader('Content-Type', contentType(file));
+    res.setHeader('Cache-Control', 'public, max-age=86400, s-maxage=604800, immutable');
+    return res.status(200).send(fs.readFileSync(file));
   } catch (error) {
-    const isTimeout = error?.name === 'AbortError';
-    const detail = isTimeout
-      ? `Timeout ao consultar a foto no TSE após ${REQUEST_TIMEOUT_MS} ms.`
-      : error?.message || String(error);
-
-    console.error('[TSE FOTO] exceção:', error);
-    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    return res.status(502).send(detail);
+    console.error('[LOCAL FOTO] erro:', error);
+    return res.status(500).send('Não foi possível carregar a foto local.');
   }
 };

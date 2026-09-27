@@ -3,7 +3,8 @@
   "regions": ["gru1"],
   "functions": {
     "api/candidates/*.js": {
-      "maxDuration": 20
+      "maxDuration": 20,
+      "includeFiles": "data/**"
     }
   }
 }
