@@ -32,6 +32,12 @@ function normalize(value) {
     .toUpperCase();
 }
 
+function getEffectiveUf(office, uf = 'RS') {
+  return normalize(office) === 'PRESIDENTE'
+    ? 'BR'
+    : normalize(uf);
+}
+
 /**
  * CSV do TSE usa ; como separador e campos entre aspas.
  * Este parser trata aspas escapadas ("") e ; dentro de campos.
@@ -165,7 +171,7 @@ function loadIndex(uf) {
 
 function lookupCandidate(office, number, uf = 'RS') {
   const normalizedOffice = normalize(office);
-  const normalizedUf = normalize(uf);
+  const normalizedUf = getEffectiveUf(normalizedOffice, uf);
   const normalizedNumber = String(number == null ? '' : number).trim();
 
   if (!normalizedUf || !normalizedOffice || !normalizedNumber) {
@@ -226,8 +232,8 @@ function lookupCandidate(office, number, uf = 'RS') {
   };
 }
 
-function findCandidateById(id, uf = 'RS') {
-  const normalizedUf = normalize(uf);
+function findCandidateById(id, uf = 'RS', office = '') {
+  const normalizedUf = getEffectiveUf(office, uf);
   if (!DATA_FILES[normalizedUf]) return null;
 
   const index = loadIndex(normalizedUf);
@@ -241,6 +247,7 @@ function clearCache() {
 module.exports = {
   OFFICE_CARGO_CODE,
   normalize,
+  getEffectiveUf,
   loadIndex,
   lookupCandidate,
   findCandidateById,

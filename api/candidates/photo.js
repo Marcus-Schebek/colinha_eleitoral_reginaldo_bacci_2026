@@ -24,6 +24,12 @@ function normalize(value) {
   return String(value == null ? '' : value).trim().toUpperCase();
 }
 
+function getEffectiveUf(office, uf = 'RS') {
+  return normalize(office) === 'PRESIDENTE'
+    ? 'BR'
+    : normalize(uf);
+}
+
 function isSafeId(value) {
   return /^[0-9A-Za-z_-]{1,80}$/.test(String(value || ''));
 }
@@ -32,11 +38,12 @@ function isSafeId(value) {
  * LEIA-ME do TSE:
  * UF + SQ_CANDIDATO + "_div" + extensão.
  *
- * Ex.: FRS210002537055_div.jpg
+ * Ex.: FRS210002541525_div.jpg
+ * Para Presidente: FBR{SQ_CANDIDATO}_div.jpg
  */
-function findPhotoFile(id, uf) {
+function findPhotoFile(id, uf, office = '') {
   const safeId = String(id || '').trim();
-  const safeUf = normalize(uf || 'RS');
+  const safeUf = getEffectiveUf(office, uf || 'RS');
 
   if (!isSafeId(safeId) || !/^[A-Z]{2}$/.test(safeUf)) {
     return null;
@@ -85,7 +92,8 @@ module.exports = async function handler(req, res) {
 
   const params = query(req);
   const id = String(params.id == null ? '' : params.id).trim();
-  const uf = normalize(params.uf || 'RS');
+  const office = normalize(params.office || '');
+  const uf = getEffectiveUf(office, params.uf || 'RS');
 
   if (!id || !isSafeId(id)) {
     return res.status(400).send('ID de candidato inválido.');
@@ -95,7 +103,7 @@ module.exports = async function handler(req, res) {
     return res.status(400).send('UF inválida.');
   }
 
-  const file = findPhotoFile(id, uf);
+  const file = findPhotoFile(id, uf, office);
 
   if (!file) {
     res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=86400');

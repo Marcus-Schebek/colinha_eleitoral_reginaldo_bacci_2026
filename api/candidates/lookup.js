@@ -1,5 +1,6 @@
 const {
   lookupCandidate,
+  getEffectiveUf,
 } = require('./_local');
 
 function getQuery(req) {
@@ -36,15 +37,15 @@ module.exports = async function handler(req, res) {
 
   try {
     const query = getQuery(req);
-    const uf = String(query.uf || 'RS').trim();
     const office = String(query.office || '').trim();
+    const uf = getEffectiveUf(office, String(query.uf || 'RS').trim());
     const number = String(query.number == null ? '' : query.number).trim();
 
     const candidate = lookupCandidate(office, number, uf);
 
-    if (candidate.found === false) {
-      const status = candidate.source === 'validation' ? 400 : 200;
-      return sendJson(res, status, candidate);
+    // Erro de configuração/base local.
+    if (candidate.found === false && candidate.source !== 'local' && candidate.source !== 'validation') {
+      return sendJson(res, 500, candidate);
     }
 
     return sendJson(res, 200, candidate);
