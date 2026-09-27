@@ -531,20 +531,30 @@
     /* =========================================================
        FOTO HERO
        ========================================================= */
-    .hero {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 420px;
-      height: 780px;
-    }
-    .hero img {
-      width: 100%;
-      height: 100%;
+.hero {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-      object-fit: contain;
-      object-position: bottom center;
-    }
+  width: 100%;
+  height: 780px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  pointer-events: none;
+  z-index: 5;
+}
+
+.hero img {
+  width: 420px;
+  height: 780px;
+
+  object-fit: contain;
+  object-position: bottom center;
+}
 
 /* =========================================================
    EXPORTAÇÃO — LAYOUT FIXO 1080 x 1920
