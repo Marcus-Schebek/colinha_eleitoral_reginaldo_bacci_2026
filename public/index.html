@@ -434,7 +434,7 @@
         await this.loadAnchorData();
       }
 
-      // Busca o candidato âncora diretamente no TSE
+      // Busca o candidato âncora na base local
       async loadAnchorData() {
         try {
           const data = await this.fetchCandidate('DEPUTADO_FEDERAL', '1245');
@@ -447,7 +447,7 @@
             };
           }
         } catch (e) {
-          console.warn('Não foi possível atualizar os dados do candidato âncora no TSE.');
+          console.warn('Não foi possível carregar os dados locais do candidato âncora.');
         } finally {
           this.renderAnchorCard();
         }
@@ -466,14 +466,15 @@
         }
       }
 
-      // Consulta ao backend uma única vez quando o número é concluído.
-      // O backend consulta diretamente o TSE. Uma consulta é feita ao concluir o número.
+      // Consulta a base local.
+      // Presidente usa a base nacional (BR); os demais cargos usam RS.
       async fetchCandidate(office, number) {
         const normalizedOffice = String(office || '').trim().toUpperCase();
         const normalizedNumber = String(number || '').trim();
+        const lookupUf = normalizedOffice === 'PRESIDENTE' ? 'BR' : 'RS';
 
         const params = new URLSearchParams({
-          uf: 'RS',
+          uf: lookupUf,
           office: normalizedOffice,
           number: normalizedNumber
         });
@@ -492,8 +493,7 @@
           const text = await res.text();
           data = {
             found: false,
-            source: 'tse',
-            tseStatus: res.status,
+            source: 'local',
             error: text || `Erro HTTP ${res.status}`
           };
         }
@@ -603,10 +603,12 @@
         try {
           const result = await this.fetchCandidate(config.officeApi, this.typedDigits);
           
-          // Tratamento explícito de candidato não encontrado ou fora do RS
-          if (!result || !result.found || (result.uf && result.uf !== 'RS')) {
-            const message = result?.tseError || result?.error ||
-              'Candidato não encontrado na resposta do TSE.';
+          // Presidente é nacional (BR); os demais cargos são do RS.
+          const expectedUf = config.officeApi === 'PRESIDENTE' ? 'BR' : 'RS';
+
+          if (!result || !result.found || (result.uf && result.uf !== expectedUf)) {
+            const message = result?.error ||
+              'Candidato não encontrado na base local.';
             this.updateUrnStatus('error', this.formatTseError(message));
             this.toggleConfirmButton(false);
             return;
@@ -617,15 +619,15 @@
           this.toggleConfirmButton(true);
 
         } catch (err) {
-          const tseMessage = err?.tseError || err?.message || 'Erro ao consultar o TSE.';
+          const tseMessage = err?.message || 'Erro ao consultar a base local.';
           const cleanMessage = String(tseMessage).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-          this.updateUrnStatus('error', `TSE: ${cleanMessage.slice(0, 220)}`);
+          this.updateUrnStatus('error', cleanMessage.slice(0, 220));
           this.toggleConfirmButton(false);
         }
       }
 
       formatTseError(message) {
-        return String(message || 'Erro ao consultar o TSE.')
+        return String(message || 'Erro ao consultar a base local.')
           .replace(/<[^>]*>/g, ' ')
           .replace(/\s+/g, ' ')
           .trim()
