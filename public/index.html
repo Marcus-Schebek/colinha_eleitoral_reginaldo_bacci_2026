@@ -39,6 +39,834 @@
     .blink-cursor {
       animation: blink 1s infinite;
     }
+  
+
+    /* ===== CSS DO MODELO DE EXPORTAÇÃO 1080x1920 ===== */
+/* =========================================================
+       STORIES — 1080 x 1920
+       ========================================================= */
+
+    .export-stories {
+      width: 1080px;
+      height: 1920px;
+
+      background: #ffffff;
+
+      position: relative;
+      overflow: hidden;
+
+      padding: 48px;
+
+      color: #100a62;
+
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.20);
+    }
+
+
+    /* =========================================================
+       DETALHES DECORATIVOS
+       ========================================================= */
+
+    .decoration-blue {
+      position: absolute;
+
+      top: -120px;
+      left: -120px;
+
+      width: 360px;
+      height: 360px;
+
+      border-radius: 50%;
+
+      background: #100a62;
+      opacity: 0.035;
+
+      pointer-events: none;
+    }
+
+    .decoration-red {
+      position: absolute;
+
+      right: -140px;
+      bottom: -140px;
+
+      width: 400px;
+      height: 400px;
+
+      border-radius: 50%;
+
+      background: #db002c;
+      opacity: 0.04;
+
+      pointer-events: none;
+    }
+
+
+    /* =========================================================
+       CARD PRINCIPAL
+       ========================================================= */
+
+    .main-card {
+      width: 100%;
+      height: 100%;
+
+      background: #ffffff;
+
+      border: 4px solid #100a62;
+
+      border-radius: 40px;
+
+      padding: 40px;
+
+      position: relative;
+      z-index: 2;
+    }
+
+
+    /* =========================================================
+       CABEÇALHO
+       ========================================================= */
+
+    .header {
+      display: flex;
+      align-items: center;
+
+      padding-bottom: 24px;
+      margin-bottom: 36px;
+
+      border-bottom: 2px solid rgba(16, 10, 98, 0.12);
+    }
+
+    .header-number {
+      width: 80px;
+      height: 80px;
+
+      flex-shrink: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #100a62;
+      color: #ffffff;
+
+      border-radius: 16px;
+
+      font-size: 38px;
+      font-weight: 900;
+    }
+
+    .header-content {
+      margin-left: 18px;
+    }
+
+    .header-title {
+      margin: 0;
+
+      color: #100a62;
+
+      font-size: 38px;
+      line-height: 1;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .header-line {
+      width: 90px;
+      height: 7px;
+
+      margin-top: 10px;
+
+      border-radius: 999px;
+
+      background: #db002c;
+    }
+
+
+    /* =========================================================
+       LISTA
+       ========================================================= */
+
+    .candidates-list {
+      display: flex;
+      flex-direction: column;
+
+      gap: 30px;
+    }
+
+
+    /* =========================================================
+       CARGO
+       ========================================================= */
+
+    .candidate {
+      width: 100%;
+    }
+
+    .candidate-title {
+      display: flex;
+      align-items: center;
+
+      gap: 9px;
+
+      margin-bottom: 14px;
+
+      height: 32px;
+    }
+
+    .candidate-rose {
+      width: 30px;
+
+      flex-shrink: 0;
+
+      font-size: 24px;
+      line-height: 1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .candidate-position {
+      color: #100a62;
+
+      font-size: 25px;
+      line-height: 1;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+
+    /* =========================================================
+       CONTEÚDO DO CARGO
+       ========================================================= */
+
+    .candidate-body {
+      display: flex;
+      align-items: center;
+
+      width: 100%;
+
+      gap: 28px;
+    }
+
+
+    /* =========================================================
+       FOTO
+       ========================================================= */
+
+    .candidate-photo-frame {
+      width: 112px;
+      height: 128px;
+
+      flex-shrink: 0;
+
+      padding: 3px;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #db002c 0%,
+          #100a62 100%
+        );
+    }
+
+    .candidate-photo {
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      border-radius: 15px;
+
+      background: #ffffff;
+    }
+
+    .candidate-photo img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+      object-position: center;
+    }
+
+
+    /* =========================================================
+       ÁREA DOS NÚMEROS
+       ========================================================= */
+
+    .vote-area {
+      flex: 1;
+
+      min-width: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    /* =========================================================
+       NÚMEROS
+       ========================================================= */
+
+    .numbers {
+      width: 100%;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 10px;
+    }
+
+
+    /* =========================================================
+       CAIXA EXTERNA — BORDA GRADIENTE
+       ========================================================= */
+
+    .number-box {
+      width: 64px;
+      height: 80px;
+
+      flex: 0 0 64px;
+
+      padding: 3px;
+
+      border-radius: 13px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #db002c 0%,
+          #100a62 100%
+        );
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    /* =========================================================
+       CAIXA INTERNA
+       ========================================================= */
+
+    .number-inner {
+      width: 100%;
+      height: 100%;
+
+      border-radius: 10px;
+
+      background: #ffffff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+    }
+
+
+    /* =========================================================
+       DÍGITO
+       ========================================================= */
+
+    .number-digit {
+      display: block;
+
+      color: #100a62;
+
+      font-family: Arial, Helvetica, sans-serif;
+
+      font-size: 44px;
+      line-height: 1;
+
+      font-weight: 900;
+
+      /*
+        IMPORTANTE:
+        não usar position:absolute,
+        transform ou margin negativo.
+        O flex do .number-inner centraliza
+        vertical e horizontalmente.
+      */
+
+      margin: 0;
+      padding: 0;
+    }
+
+
+    /* =========================================================
+       CONFIRMA
+       ========================================================= */
+
+    .confirm {
+      margin-top: 10px;
+
+      min-width: 110px;
+
+      padding: 8px 18px;
+
+      border-radius: 8px;
+
+      background: #db002c;
+
+      color: #ffffff;
+
+      font-size: 14px;
+      line-height: 1;
+
+      font-weight: 900;
+
+      text-align: center;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+    }
+
+
+    /* =========================================================
+       OBSERVAÇÃO DO SENADO
+       ========================================================= */
+
+    .candidate-subtitle {
+      margin-left: 39px;
+      margin-top: -7px;
+      margin-bottom: 12px;
+
+      color: rgba(16, 10, 98, 0.65);
+
+      font-size: 14px;
+      font-weight: 700;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       RODAPÉ
+       ========================================================= */
+
+    .footer {
+      position: absolute;
+
+      left: 40px;
+      right: 40px;
+      bottom: 40px;
+
+      padding-top: 20px;
+
+      border-top: 2px solid rgba(16, 10, 98, 0.12);
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      z-index: 10;
+    }
+
+    .footer-title {
+      margin: 0;
+
+      color: #100a62;
+
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .footer-text {
+      margin: 5px 0 0;
+
+      color: rgba(16, 10, 98, 0.55);
+
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-independent {
+      margin: 0;
+
+      color: #db002c;
+
+      font-size: 11px;
+      font-weight: 900;
+
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .footer-disclaimer {
+      margin: 4px 0 0;
+
+      color: rgba(16, 10, 98, 0.45);
+
+      font-size: 11px;
+    }
+
+
+    /* =========================================================
+       FOTO HERO
+       ========================================================= */
+    .hero {
+      position: absolute;
+      right: 0;
+      left: 0;
+      width: 420px;
+      height: 780px;
+    }
+    .hero img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+      object-position: bottom center;
+    }
+
+/* =========================================================
+   EXPORTAÇÃO — LAYOUT FIXO 1080 x 1920
+   ========================================================= */
+.export-stories {
+  width: 1080px;
+  height: 1920px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 48px;
+  color: #100a62;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.export-stories *,
+.export-stories *::before,
+.export-stories *::after {
+  box-sizing: border-box;
+}
+
+.export-stories .main-card {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border: 4px solid #100a62;
+  border-radius: 40px;
+  padding: 40px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.export-stories .header {
+  margin-bottom: 28px;
+  padding-bottom: 22px;
+}
+
+.export-stories .candidates-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--export-gap, 18px);
+  position: relative;
+  z-index: 3;
+}
+
+.export-stories #tmpl-candidates-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--export-gap, 18px);
+}
+
+.export-stories .candidate {
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.export-stories .candidate-title {
+  height: 30px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.export-stories .candidate-rose {
+  width: 28px;
+  flex: 0 0 28px;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.export-stories .candidate-position {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--export-title-size, 25px);
+  line-height: 1;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+  white-space: nowrap;
+}
+
+.export-stories .candidate-subtitle {
+  margin: -4px 0 7px 35px;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.export-stories .candidate-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.export-stories .candidate-photo-stack {
+  width: 112px;
+  flex: 0 0 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.export-stories .candidate-photo-frame {
+  width: 112px;
+  height: 128px;
+  flex: 0 0 128px;
+  padding: 3px;
+  border-radius: 18px;
+  background: linear-gradient(135deg,#db002c 0%,#100a62 100%);
+}
+
+.export-stories .candidate-photo {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.export-stories .candidate-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.export-stories .candidate-name {
+  width: 112px;
+  min-height: 30px;
+  margin-top: 6px;
+  color: #100a62;
+  font-size: 13px;
+  line-height: 1.08;
+  font-weight: 800;
+  text-align: center;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.export-stories .vote-area {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.export-stories .numbers {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--export-number-gap, 10px);
+  min-width: 0;
+}
+
+.export-stories .number-box {
+  width: var(--export-number-size, 64px);
+  height: var(--export-number-height, 80px);
+  flex: 0 0 var(--export-number-size, 64px);
+  padding: 3px;
+  border-radius: 13px;
+  background: linear-gradient(135deg,#db002c 0%,#100a62 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.export-stories .number-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.export-stories .number-digit {
+  display: block;
+  width: 100%;
+  color: #100a62;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--export-number-font, 44px);
+  line-height: 1;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.export-stories .confirm {
+  margin-top: 8px;
+  min-width: 110px;
+  padding: 7px 18px;
+  border-radius: 8px;
+  background: #db002c;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Foto de candidatura: canto inferior esquerdo */
+.export-stories .candidate-hero {
+  position: absolute;
+  left: 54px;
+  bottom: 0;
+  width: 270px;
+  height: 470px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.export-stories .candidate-hero img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: bottom left;
+}
+
+.export-stories .footer {
+  z-index: 6;
+}
+
+.export-stories.compact-1 .candidate-photo-frame {
+  width: 100px;
+  height: 114px;
+  flex-basis: 114px;
+}
+.export-stories.compact-1 .candidate-photo-stack,
+.export-stories.compact-1 .candidate-name {
+  width: 100px;
+  flex-basis: 100px;
+}
+.export-stories.compact-1 .candidate-body { gap: 22px; }
+.export-stories.compact-1 .candidate-position { font-size: 22px; }
+.export-stories.compact-1 .number-box {
+  width: 58px;
+  height: 72px;
+  flex-basis: 58px;
+}
+.export-stories.compact-1 .number-digit { font-size: 39px; }
+.export-stories.compact-1 .numbers { gap: 8px; }
+
+.export-stories.compact-2 .candidate-photo-frame {
+  width: 88px;
+  height: 100px;
+  flex-basis: 100px;
+}
+.export-stories.compact-2 .candidate-photo-stack,
+.export-stories.compact-2 .candidate-name {
+  width: 88px;
+  flex-basis: 88px;
+}
+.export-stories.compact-2 .candidate-body { gap: 18px; }
+.export-stories.compact-2 .candidate-position { font-size: 20px; }
+.export-stories.compact-2 .number-box {
+  width: 52px;
+  height: 64px;
+  flex-basis: 52px;
+}
+.export-stories.compact-2 .number-digit { font-size: 35px; }
+.export-stories.compact-2 .numbers { gap: 6px; }
+.export-stories.compact-2 .confirm { min-width: 94px; font-size: 11px; padding: 6px 12px; }
+
+.export-stories.compact-3 .candidate-title { margin-bottom: 5px; }
+.export-stories.compact-3 .candidate-rose { font-size: 19px; }
+.export-stories.compact-3 .candidate-position { font-size: 18px; }
+.export-stories.compact-3 .candidate-photo-frame {
+  width: 78px;
+  height: 88px;
+  flex-basis: 88px;
+}
+.export-stories.compact-3 .candidate-photo-stack,
+.export-stories.compact-3 .candidate-name {
+  width: 78px;
+  flex-basis: 78px;
+}
+.export-stories.compact-3 .candidate-name { font-size: 11px; }
+.export-stories.compact-3 .candidate-body { gap: 14px; }
+.export-stories.compact-3 .number-box {
+  width: 46px;
+  height: 58px;
+  flex-basis: 46px;
+  border-radius: 10px;
+}
+.export-stories.compact-3 .number-inner { border-radius: 7px; }
+.export-stories.compact-3 .number-digit { font-size: 31px; }
+.export-stories.compact-3 .numbers { gap: 5px; }
+.export-stories.compact-3 .confirm { min-width: 84px; font-size: 10px; padding: 5px 9px; }
+
+.export-photo-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(16,10,98,.40);
+  font-size: 14px;
+  font-weight: 800;
+}
+
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -109,7 +937,7 @@
       <div class="flex items-center justify-between text-xs text-slate-400 px-1">
         <span id="urn-step-indicator" class="font-medium">Passo 1 de 5</span>
         <span class="text-emerald-400 font-semibold flex items-center gap-1">
-          <i data-lucide="map-pin" class="w-3 h-3"></i> Apenas candidatos do RS
+          <i data-lucide="map-pin" class="w-3 h-3"></i> Candidatos do RS • Presidente nacional
         </span>
       </div>
 
@@ -147,7 +975,7 @@
           <!-- Loader de Busca -->
           <div id="urn-status-loading" class="hidden flex items-center gap-2 text-slate-700 text-xs font-semibold">
             <div class="w-3.5 h-3.5 border-2 border-slate-800 border-t-transparent rounded-full animate-spin"></div>
-            <span>Buscando candidato no TSE (RS)...</span>
+            <span>Buscando candidato na base local...</span>
           </div>
 
           <!-- Candidato Encontrado -->
@@ -165,7 +993,7 @@
           <!-- Erro / Não encontrado / Fora do RS -->
           <div id="urn-status-error" class="hidden text-red-700 text-xs font-bold flex items-start gap-1.5 bg-red-500/10 p-2 rounded border border-red-500/20">
             <i data-lucide="alert-circle" class="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5"></i>
-            <span id="urn-error-message">Candidato não encontrado para o RS. Confira o número e tente novamente.</span>
+            <span id="urn-error-message">Candidato não encontrado na base local. Confira o número e tente novamente.</span>
           </div>
 
           <!-- Instrução Inicial -->
@@ -271,10 +1099,6 @@
   <!-- RODAPÉ LEGAL E DE NEUTRALIDADE -->
   <footer class="border-t border-slate-800/80 bg-slate-950/60 py-4 px-4 text-center mt-6">
     <div class="max-w-xl mx-auto space-y-1.5">
-      <p class="text-[10px] text-slate-400 leading-relaxed">
-        <strong>Aviso Legal & Neutralidade:</strong> Esta é uma ferramenta independente desenvolvida para suporte ao candidato Reginaldo Bacci (RS). 
-        <strong>Não possui qualquer vínculo oficial com o Tribunal Superior Eleitoral (TSE)</strong> ou com a Justiça Eleitoral.
-      </p>
       <p class="text-[9px] text-slate-400">
         Eleições 2026 • Estado do Rio Grande do Sul
       </p>
@@ -282,109 +1106,62 @@
   </footer>
 
 
-<!-- CONTAINER OCULTO PARA COMPOSIÇÃO HTML DO STORIES (1080x1920) -->
-<div class="fixed top-[-9999px] left-[-9999px] pointer-events-none">
+<!-- CONTAINER DE RENDERIZAÇÃO DA COLINHA (1080x1920) -->
+<div id="export-render-host"
+     style="position:fixed;left:-12000px;top:0;width:1080px;height:1920px;overflow:hidden;pointer-events:none;">
+  <div id="stories-template" class="export-stories">
+  <div class="decoration-blue"></div>
+  <div class="decoration-red"></div>
 
-  <div
-    id="stories-template"
-    class="w-[1080px] h-[1920px] bg-white p-12 flex flex-col font-sans relative overflow-hidden select-none text-[#100a62]"
-  >
-
-    <!-- DETALHES DECORATIVOS -->
-    <div class="absolute -top-[120px] -left-[120px] w-[360px] h-[360px] rounded-full bg-[#100a62] opacity-[0.035] pointer-events-none"></div>
-    <div class="absolute -right-[140px] -bottom-[140px] w-[400px] h-[400px] rounded-full bg-[#db002c] opacity-[0.04] pointer-events-none"></div>
-
-    <!-- CARD PRINCIPAL -->
-    <div class="w-full h-full bg-white border-4 border-[#100a62] rounded-[40px] p-10 relative z-[2]">
-
-      <!-- CABEÇALHO -->
-      <header class="flex items-center pb-6 mb-9 border-b-2 border-[#100a62]/[0.12]">
-        <div class="w-20 h-20 shrink-0 flex items-center justify-center bg-[#100a62] text-white rounded-2xl text-[38px] leading-none font-black">
-          12
-        </div>
-
-        <div class="ml-[18px] h-20 flex flex-col justify-center">
-          <h1 class="m-0 text-[#100a62] text-[38px] leading-none font-black uppercase tracking-[-1px]">
-            Bacci Colinha 2026
-          </h1>
-          <div class="w-[90px] h-[7px] mt-[10px] rounded-full bg-[#db002c]"></div>
-        </div>
-      </header>
-
-      <!-- LISTA DE CARGOS -->
-      <main class="flex flex-col gap-[30px]">
-
-        <!-- DEPUTADO FEDERAL -->
-        <section id="template-bacci-card" class="w-full">
-
-          <div class="h-8 flex items-center gap-[9px] mb-[14px]">
-            <span class="w-[30px] shrink-0 text-[24px] leading-none flex items-center justify-center">🌹</span>
-            <span class="text-[#100a62] text-[25px] leading-none font-black uppercase tracking-[0.5px]">
-              Dep. Federal
-            </span>
-          </div>
-
-          <div class="relative w-full min-h-32 flex items-center">
-            <!-- FOTO -->
-            <div class="w-28 h-32 shrink-0 p-[3px] rounded-[18px] bg-[linear-gradient(135deg,#db002c_0%,#100a62_100%)]">
-              <div class="w-full h-full flex items-center justify-center overflow-hidden rounded-[15px] bg-white">
-                <img
-                  id="tmpl-bacci-photo"
-                  alt="Candidato"
-                  class="w-full h-full block object-cover object-center hidden"
-                >
-                <div id="tmpl-bacci-fallback" class="w-full h-full flex items-center justify-center text-[#100a62]/40">
-                  <i data-lucide="user" class="w-14 h-14"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- VOTAÇÃO CENTRALIZADA NO CARD -->
-            <div class="absolute left-1/2 top-1/2 w-[420px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
-              <div id="tmpl-bacci-numbers" class="w-full flex items-center justify-center gap-[10px]"></div>
-              <div class="mt-[10px] min-w-[110px] px-[18px] py-2 rounded-lg bg-[#db002c] text-white text-[14px] leading-none font-black text-center uppercase tracking-[1px]">
-                CONFIRMA
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- DEMAIS CARGOS — POPULADOS VIA JS -->
-        <div id="tmpl-candidates-list" class="flex flex-col gap-[30px]"></div>
-
-      </main>
-
-      <!-- FOTO GRANDE DO CANDIDATO -->
-      <div class="absolute right-0 bottom-0 w-[420px] h-[780px] flex items-end justify-center pointer-events-none z-[5]">
-        <img
-          id="tmpl-hero-candidate-photo"
-          src="sua-foto-candidato.png"
-          alt="Candidato destaque"
-          class="w-full h-full object-contain object-bottom"
-        >
+  <div class="main-card">
+    <header class="header">
+      <div class="header-number">12</div>
+      <div class="header-content">
+        <h1 class="header-title">Bacci Colinha 2026</h1>
+        <div class="header-line"></div>
       </div>
+    </header>
 
-      <!-- RODAPÉ -->
-      <footer class="absolute left-10 right-10 bottom-10 pt-5 border-t-2 border-[#100a62]/[0.12] flex items-center justify-between z-10">
-        <div>
-          <p class="m-0 text-[#100a62] text-xl font-black">Colinha Eleitoral Personalizada</p>
-          <p class="mt-[5px] mb-0 text-[#100a62]/[0.55] text-[14px] font-semibold">
-            Exercício do direito de voto • RS 2026
-          </p>
+    <main class="candidates-list">
+      <section id="template-bacci-card" class="candidate">
+        <div class="candidate-title">
+          <span class="candidate-rose">🌹</span>
+          <span class="candidate-position">Dep. Federal</span>
         </div>
 
-        <div class="text-right">
-          <p class="m-0 text-[#db002c] text-[11px] font-black uppercase tracking-[2px]">
-            Ferramenta Independente
-          </p>
-          <p class="mt-1 mb-0 text-[#100a62]/[0.45] text-[11px]">
-            Sem vínculo com a Justiça Eleitoral/TSE
-          </p>
-        </div>
-      </footer>
+        <div class="candidate-body">
+          <div class="candidate-photo-stack">
+            <div class="candidate-photo-frame">
+              <div class="candidate-photo">
+                <img id="tmpl-bacci-photo" alt="Candidato">
+                <div id="tmpl-bacci-fallback" class="export-photo-fallback">FOTO</div>
+              </div>
+            </div>
+            <div id="tmpl-bacci-name" class="candidate-name">Reginaldo Bacci</div>
+          </div>
 
+          <div class="vote-area">
+            <div id="tmpl-bacci-numbers" class="numbers"></div>
+            <div class="confirm">CONFIRMA</div>
+          </div>
+        </div>
+      </section>
+
+      <div id="tmpl-candidates-list" class="candidates-list"></div>
+    </main>
+
+    <div class="candidate-hero">
+      <img src="reginaldo-bacci.png" alt="Candidato destaque">
     </div>
+
+    <footer class="footer">
+      <div>
+        <p class="footer-title">Colinha Eleitoral Personalizada</p>
+        <p class="footer-text">Exercício do direito de voto • RS 2026</p>
+      </div>
+    </footer>
   </div>
+</div>
 </div>
 
   <!-- LÓGICA E JAVASCRIPT DA APLICAÇÃO -->
@@ -800,161 +1577,225 @@
           return null;
         }
       }
-async generateExport() {
-  this.goToStep('export');
-  document.getElementById('export-loading')?.classList.remove('hidden');
-  document.getElementById('export-image-result')?.classList.add('hidden');
+      async generateExport() {
+        this.goToStep('export');
 
-  // 1. Preenche e converte a Foto Grande Destaque (Candidato)
-  const heroImg = document.getElementById('tmpl-hero-candidate-photo');
-  if (heroImg) {
-    const heroBase64 = await this.getBase64Image('sua-foto-candidato.png');
-    if (heroBase64) {
-      heroImg.src = heroBase64;
-    }
-  }
+        const loading = document.getElementById('export-loading');
+        const resultImg = document.getElementById('export-image-result');
 
-  // 2. Preenche o Candidato Destaque (DEPUTADO FEDERAL - Bacci)
-  const bacci = this.colinhaState.DEPUTADO_FEDERAL;
-  if (bacci) {
-    const numbersContainer = document.getElementById('tmpl-bacci-numbers');
-    if (numbersContainer) {
-      const number = String(bacci.number || '').trim();
-      const digits = number.split('');
+        loading?.classList.remove('hidden');
+        resultImg?.classList.add('hidden');
+        this.generatedBlob = null;
 
-      numbersContainer.innerHTML = digits.map(digit => `
-        <div class="w-16 h-20 flex-[0_0_64px] p-[3px] rounded-[13px] bg-[linear-gradient(135deg,#db002c_0%,#100a62_100%)] flex items-center justify-center">
-          <div class="w-full h-full rounded-[10px] bg-white flex items-center justify-center overflow-hidden">
-            <span class="block text-[#100a62] font-sans text-[44px] leading-none font-black m-0 p-0">
-              ${digit}
-            </span>
-          </div>
-        </div>
-      `).join('');
-    }
+        const bacci = this.colinhaState.DEPUTADO_FEDERAL;
+        const bacciNumbers = document.getElementById('tmpl-bacci-numbers');
+        const bacciPhoto = document.getElementById('tmpl-bacci-photo');
+        const bacciFallback = document.getElementById('tmpl-bacci-fallback');
 
-    if (bacci.photoUrl) {
-      const base64Photo = await this.getBase64Image(bacci.photoUrl);
-      const img = document.getElementById('tmpl-bacci-photo');
+        if (bacciNumbers) {
+          bacciNumbers.innerHTML = this.buildExportNumbers(bacci?.number);
+        }
 
-      if (img && base64Photo) {
-        img.src = base64Photo;
-        img.classList.remove('hidden');
-        document.getElementById('tmpl-bacci-fallback')?.classList.add('hidden');
+        if (bacciPhoto) {
+          bacciPhoto.removeAttribute('src');
+          bacciPhoto.style.display = 'none';
+        }
+        bacciFallback?.classList.remove('hidden');
+
+        const bacciName = document.getElementById('tmpl-bacci-name');
+        if (bacciName) {
+          bacciName.textContent = bacci?.name || 'Reginaldo Bacci';
+        }
+
+        if (bacci?.photoUrl && bacciPhoto) {
+          const photo = await this.getBase64Image(bacci.photoUrl);
+          if (photo) {
+            bacciPhoto.src = photo;
+            bacciPhoto.style.display = 'block';
+            bacciFallback?.classList.add('hidden');
+          }
+        }
+
+        const listContainer = document.getElementById('tmpl-candidates-list');
+        if (listContainer) {
+          listContainer.innerHTML = '';
+
+          for (const cfg of OFFICES_CONFIG) {
+            const cand = this.colinhaState[cfg.id];
+            if (!cand) continue;
+
+            const photoBase64 = cand.photoUrl
+              ? await this.getBase64Image(cand.photoUrl)
+              : null;
+
+            const section = document.createElement('section');
+            section.className = 'candidate';
+
+            const position = cfg.title
+              .replace(' (1º Voto)', '')
+              .replace(' (2º Voto)', '');
+
+            const subtitle =
+              cfg.id === 'SENADOR_1' ? '<div class="candidate-subtitle">1º voto</div>' :
+              cfg.id === 'SENADOR_2' ? '<div class="candidate-subtitle">2º voto</div>' :
+              '';
+
+            section.innerHTML = `
+              <div class="candidate-title">
+                <span class="candidate-rose">🌹</span>
+                <span class="candidate-position">${this.escapeHtml(position)}</span>
+              </div>
+
+              ${subtitle}
+
+              <div class="candidate-body">
+                <div class="candidate-photo-stack">
+                  <div class="candidate-photo-frame">
+                    <div class="candidate-photo">
+                      ${
+                        photoBase64
+                          ? `<img src="${photoBase64}" alt="Candidato">`
+                          : `<div class="export-photo-fallback">FOTO</div>`
+                      }
+                    </div>
+                  </div>
+                  <div class="candidate-name">${this.escapeHtml(cand.name || 'Candidato')}</div>
+                </div>
+
+                <div class="vote-area">
+                  <div class="numbers">
+                    ${this.buildExportNumbers(cand.number)}
+                  </div>
+                  <div class="confirm">CONFIRMA</div>
+                </div>
+              </div>
+            `;
+
+            listContainer.appendChild(section);
+          }
+        }
+
+        this.fitExportLayout();
+
+        if (document.fonts?.ready) {
+          await document.fonts.ready;
+        }
+
+        // Fontes podem alterar as medidas; recalcula uma segunda vez antes do canvas.
+        this.fitExportLayout();
+
+        const target = document.getElementById('stories-template');
+        if (!target) {
+          throw new Error('Template da colinha não encontrado.');
+        }
+
+        const images = Array.from(target.querySelectorAll('img'));
+        await Promise.all(images.map(img => {
+          if (img.complete) return Promise.resolve();
+          return new Promise(resolve => {
+            img.addEventListener('load', resolve, { once: true });
+            img.addEventListener('error', resolve, { once: true });
+          });
+        }));
+
+        try {
+          const canvas = await html2canvas(target, {
+            width: 1080,
+            height: 1920,
+            scale: 1,
+            useCORS: true,
+            allowTaint: false,
+            backgroundColor: '#ffffff',
+            imageTimeout: 15000,
+            logging: false,
+            scrollX: 0,
+            scrollY: 0,
+            windowWidth: 1080,
+            windowHeight: 1920
+          });
+
+          const blob = await new Promise(resolve =>
+            canvas.toBlob(resolve, 'image/png')
+          );
+
+          if (!blob) {
+            throw new Error('Não foi possível criar o PNG.');
+          }
+
+          this.generatedBlob = blob;
+
+          const imgUrl = URL.createObjectURL(blob);
+          if (resultImg) {
+            resultImg.src = imgUrl;
+            resultImg.classList.remove('hidden');
+          }
+
+          loading?.classList.add('hidden');
+        } catch (err) {
+          console.error('Erro na geração da imagem:', err);
+          loading?.classList.add('hidden');
+          alert('Erro ao gerar a imagem da colinha. Tente novamente.');
+        }
       }
-    }
-  }
 
-// 3. Monta a lista dos demais cargos seguindo exatamente o mesmo padrão visual do card Tailwind
-const listContainer = document.getElementById('tmpl-candidates-list');
-if (listContainer) {
-  listContainer.innerHTML = '';
+      fitExportLayout() {
+        const target = document.getElementById('stories-template');
+        const list = target?.querySelector('.candidates-list');
+        const dynamicList = document.getElementById('tmpl-candidates-list');
+        if (!target || !list || !dynamicList) return;
 
-  const promises = OFFICES_CONFIG.map(async (cfg) => {
-    const cand = this.colinhaState[cfg.id];
-    if (!cand) return null;
+        target.classList.remove('compact-1', 'compact-2', 'compact-3');
+        target.style.setProperty('--export-gap', '18px');
 
-    const photoBase64 = cand.photoUrl ? await this.getBase64Image(cand.photoUrl) : null;
-    const number = String(cand.number || '').trim();
-    const digitsArray = number === 'BRANCO' ? ['B', 'R', 'A', 'N', 'C', 'O'] : number.split('');
+        const modes = ['', 'compact-1', 'compact-2', 'compact-3'];
+        for (const mode of modes) {
+          target.classList.remove('compact-1', 'compact-2', 'compact-3');
+          if (mode) target.classList.add(mode);
 
-    const digitsHtml = digitsArray.map(digit => `
-      <div class="w-16 h-20 flex-[0_0_64px] p-[3px] rounded-[13px] bg-[linear-gradient(135deg,#db002c_0%,#100a62_100%)] flex items-center justify-center">
-        <div class="w-full h-full rounded-[10px] bg-white flex items-center justify-center overflow-hidden">
-          <span class="block text-[#100a62] font-sans text-[44px] leading-none font-black m-0 p-0">
-            ${digit}
-          </span>
-        </div>
-      </div>
-    `).join('');
+          const footer = target.querySelector('.footer');
+          const listTop = list.getBoundingClientRect().top;
+          const footerTop = footer?.getBoundingClientRect().top || 0;
+          const available = footerTop - listTop - 16;
+          const children = Array.from(list.children);
+          const totalHeight = children.reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
+          const gaps = Math.max(0, children.length - 1);
+          const gap = gaps ? Math.floor((available - totalHeight) / gaps) : 0;
 
-    const subtitle = cfg.id === 'SENADOR_1'
-      ? '<div class="ml-[39px] mt-[-7px] mb-3 text-[#100a62]/[0.65] text-[14px] font-bold uppercase">1º voto</div>'
-      : cfg.id === 'SENADOR_2'
-        ? '<div class="ml-[39px] mt-[-7px] mb-3 text-[#100a62]/[0.65] text-[14px] font-bold uppercase">2º voto</div>'
-        : '';
+          if (gap >= 8) {
+            target.style.setProperty('--export-gap', `${Math.min(gap, 22)}px`);
+            return;
+          }
+        }
 
-    const itemEl = document.createElement('section');
-    itemEl.className = 'w-full';
-    itemEl.innerHTML = `
-      <div class="h-8 flex items-center gap-[9px] mb-[14px]">
-        <span class="w-[30px] shrink-0 text-[24px] leading-none flex items-center justify-center">🌹</span>
-        <span class="text-[#100a62] text-[25px] leading-none font-black uppercase tracking-[0.5px]">
-          ${cfg.title.replace(' (1º Voto)', '').replace(' (2º Voto)', '')}
-        </span>
-      </div>
-
-      ${subtitle}
-
-      <div class="relative w-full min-h-32 flex items-center">
-        <!-- FOTO -->
-        <div class="w-28 h-32 shrink-0 p-[3px] rounded-[18px] bg-[linear-gradient(135deg,#db002c_0%,#100a62_100%)]">
-          <div class="w-full h-full flex items-center justify-center overflow-hidden rounded-[15px] bg-white">
-            ${
-              photoBase64
-                ? `<img src="${photoBase64}" alt="Candidato" class="w-full h-full block object-cover object-center">`
-                : `<div class="w-full h-full flex items-center justify-center text-[#100a62]/40"><i data-lucide="user" class="w-14 h-14"></i></div>`
-            }
-          </div>
-        </div>
-
-        <!-- VOTAÇÃO CENTRALIZADA NO CARD -->
-        <div class="absolute left-1/2 top-1/2 w-[420px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
-          <div class="w-full flex items-center justify-center gap-[10px]">
-            ${digitsHtml}
-          </div>
-
-          <div class="mt-[10px] min-w-[110px] px-[18px] py-2 rounded-lg bg-[#db002c] text-white text-[14px] leading-none font-black text-center uppercase tracking-[1px]">
-            CONFIRMA
-          </div>
-        </div>
-      </div>
-    `;
-
-    return itemEl;
-  });
-
-  const renderedItems = await Promise.all(promises);
-  renderedItems.forEach(item => {
-    if (item) listContainer.appendChild(item);
-  });
-}
-
-  if (window.lucide) {
-    lucide.createIcons();
-  }
-
-  // 4. Renderização do Canvas rápida
-  try {
-    const target = document.getElementById('stories-template');
-    if (!target) return;
-
-    const canvas = await html2canvas(target, {
-      scale: 1,
-      useCORS: true,
-      allowTaint: false,
-      logging: false,
-      imageTimeout: 0,
-      backgroundColor: null
-    });
-
-    canvas.toBlob((blob) => {
-      this.generatedBlob = blob;
-      const imgUrl = URL.createObjectURL(blob);
-      const imgResult = document.getElementById('export-image-result');
-      if (imgResult) {
-        imgResult.src = imgUrl;
-        imgResult.classList.remove('hidden');
+        target.style.setProperty('--export-gap', '6px');
       }
-      document.getElementById('export-loading')?.classList.add('hidden');
-    }, 'image/jpeg', 0.85);
 
-  } catch (err) {
-    console.error('Erro na geração da imagem:', err);
-    alert('Erro ao gerar a imagem da colinha. Tente novamente.');
-    document.getElementById('export-loading')?.classList.add('hidden');
-  }
-}
+      buildExportNumbers(number) {
+        const value = String(number || '').trim();
+        if (!value) return '';
+
+        const digits = value === 'BRANCO'
+          ? ['B', 'R', 'A', 'N', 'C', 'O']
+          : value.split('');
+
+        return digits.map(digit => `
+          <div class="number-box">
+            <div class="number-inner">
+              <span class="number-digit">${this.escapeHtml(digit)}</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      escapeHtml(value) {
+        return String(value ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
       downloadImage() {
         if (!this.generatedBlob) return;
         const link = document.createElement('a');
