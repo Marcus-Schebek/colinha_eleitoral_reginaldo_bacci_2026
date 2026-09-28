@@ -8,11 +8,9 @@
   <!-- Tailwind CSS & Lucide Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- html2canvas para renderização perfeita da imagem em Stories (1080x1920) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Share+Tech+Mono&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Share+Tech+Mono&family=Anton&family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,600&display=swap');
     
     body {
       font-family: 'Inter', sans-serif;
@@ -40,849 +38,6 @@
       animation: blink 1s infinite;
     }
   
-
-    /* ===== CSS DO MODELO DE EXPORTAÇÃO 1080x1920 ===== */
-/* =========================================================
-       STORIES — 1080 x 1920
-       ========================================================= */
-
-    .export-stories {
-      width: 1080px;
-      height: 1920px;
-
-      background: #ffffff;
-
-      position: relative;
-      overflow: hidden;
-
-      padding: 48px;
-
-      color: #100a62;
-
-      box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.20);
-    }
-
-
-    /* =========================================================
-       DETALHES DECORATIVOS
-       ========================================================= */
-
-    .decoration-blue {
-      position: absolute;
-
-      top: -120px;
-      left: -120px;
-
-      width: 360px;
-      height: 360px;
-
-      border-radius: 50%;
-
-      background: #100a62;
-      opacity: 0.035;
-
-      pointer-events: none;
-    }
-
-    .decoration-red {
-      position: absolute;
-
-      right: -140px;
-      bottom: -140px;
-
-      width: 400px;
-      height: 400px;
-
-      border-radius: 50%;
-
-      background: #db002c;
-      opacity: 0.04;
-
-      pointer-events: none;
-    }
-
-
-    /* =========================================================
-       CARD PRINCIPAL
-       ========================================================= */
-
-    .main-card {
-      width: 100%;
-      height: 100%;
-
-      background: #ffffff;
-
-      border: 4px solid #100a62;
-
-      border-radius: 40px;
-
-      padding: 40px;
-
-      position: relative;
-      z-index: 2;
-    }
-
-
-    /* =========================================================
-       CABEÇALHO
-       ========================================================= */
-
-    .header {
-      display: flex;
-      align-items: center;
-
-      padding-bottom: 24px;
-      margin-bottom: 36px;
-
-      border-bottom: 2px solid rgba(16, 10, 98, 0.12);
-    }
-
-    .header-number {
-      width: 80px;
-      height: 80px;
-
-      flex-shrink: 0;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: #100a62;
-      color: #ffffff;
-
-      border-radius: 16px;
-
-      font-size: 38px;
-      font-weight: 900;
-    }
-
-    .header-content {
-      margin-left: 18px;
-    }
-
-    .header-title {
-      margin: 0;
-
-      color: #100a62;
-
-      font-size: 38px;
-      line-height: 1;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-      letter-spacing: -1px;
-    }
-
-    .header-line {
-      width: 90px;
-      height: 7px;
-
-      margin-top: 10px;
-
-      border-radius: 999px;
-
-      background: #db002c;
-    }
-
-
-    /* =========================================================
-       LISTA
-       ========================================================= */
-
-    .candidates-list {
-      display: flex;
-      flex-direction: column;
-
-      gap: 30px;
-    }
-
-
-    /* =========================================================
-       CARGO
-       ========================================================= */
-
-    .candidate {
-      width: 100%;
-    }
-
-    .candidate-title {
-      display: flex;
-      align-items: center;
-
-      gap: 9px;
-
-      margin-bottom: 14px;
-
-      height: 32px;
-    }
-
-    .candidate-rose {
-      width: 30px;
-
-      flex-shrink: 0;
-
-      font-size: 24px;
-      line-height: 1;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .candidate-position {
-      color: #100a62;
-
-      font-size: 25px;
-      line-height: 1;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-
-    /* =========================================================
-       CONTEÚDO DO CARGO
-       ========================================================= */
-
-    .candidate-body {
-      display: flex;
-      align-items: center;
-
-      width: 100%;
-
-      gap: 28px;
-    }
-
-
-    /* =========================================================
-       FOTO
-       ========================================================= */
-
-    .candidate-photo-frame {
-      width: 112px;
-      height: 128px;
-
-      flex-shrink: 0;
-
-      padding: 3px;
-
-      border-radius: 18px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #db002c 0%,
-          #100a62 100%
-        );
-    }
-
-    .candidate-photo {
-      width: 100%;
-      height: 100%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      overflow: hidden;
-
-      border-radius: 15px;
-
-      background: #ffffff;
-    }
-
-    .candidate-photo img {
-      width: 100%;
-      height: 100%;
-
-      display: block;
-
-      object-fit: cover;
-      object-position: center;
-    }
-
-
-    /* =========================================================
-       ÁREA DOS NÚMEROS
-       ========================================================= */
-
-    .vote-area {
-      flex: 1;
-
-      min-width: 0;
-
-      display: flex;
-      flex-direction: column;
-
-      align-items: center;
-      justify-content: center;
-    }
-
-
-    /* =========================================================
-       NÚMEROS
-       ========================================================= */
-
-    .numbers {
-      width: 100%;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      gap: 10px;
-    }
-
-
-    /* =========================================================
-       CAIXA EXTERNA — BORDA GRADIENTE
-       ========================================================= */
-
-    .number-box {
-      width: 64px;
-      height: 80px;
-
-      flex: 0 0 64px;
-
-      padding: 3px;
-
-      border-radius: 13px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #db002c 0%,
-          #100a62 100%
-        );
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-
-    /* =========================================================
-       CAIXA INTERNA
-       ========================================================= */
-
-    .number-inner {
-      width: 100%;
-      height: 100%;
-
-      border-radius: 10px;
-
-      background: #ffffff;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      overflow: hidden;
-    }
-
-
-    /* =========================================================
-       DÍGITO
-       ========================================================= */
-
-    .number-digit {
-      display: block;
-
-      color: #100a62;
-
-      font-family: Arial, Helvetica, sans-serif;
-
-      font-size: 44px;
-      line-height: 1;
-
-      font-weight: 900;
-
-      /*
-        IMPORTANTE:
-        não usar position:absolute,
-        transform ou margin negativo.
-        O flex do .number-inner centraliza
-        vertical e horizontalmente.
-      */
-
-      margin: 0;
-      padding: 0;
-    }
-
-
-    /* =========================================================
-       CONFIRMA
-       ========================================================= */
-
-    .confirm {
-      margin-top: 10px;
-
-      min-width: 110px;
-
-      padding: 8px 18px;
-
-      border-radius: 8px;
-
-      background: #db002c;
-
-      color: #ffffff;
-
-      font-size: 14px;
-      line-height: 1;
-
-      font-weight: 900;
-
-      text-align: center;
-
-      text-transform: uppercase;
-
-      letter-spacing: 1px;
-    }
-
-
-    /* =========================================================
-       OBSERVAÇÃO DO SENADO
-       ========================================================= */
-
-    .candidate-subtitle {
-      margin-left: 39px;
-      margin-top: -7px;
-      margin-bottom: 12px;
-
-      color: rgba(16, 10, 98, 0.65);
-
-      font-size: 14px;
-      font-weight: 700;
-
-      text-transform: uppercase;
-    }
-
-
-    /* =========================================================
-       RODAPÉ
-       ========================================================= */
-
-    .footer {
-      position: absolute;
-
-      left: 40px;
-      right: 40px;
-      bottom: 40px;
-
-      padding-top: 20px;
-
-      border-top: 2px solid rgba(16, 10, 98, 0.12);
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      z-index: 10;
-    }
-
-    .footer-title {
-      margin: 0;
-
-      color: #100a62;
-
-      font-size: 20px;
-      font-weight: 900;
-    }
-
-    .footer-text {
-      margin: 5px 0 0;
-
-      color: rgba(16, 10, 98, 0.55);
-
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .footer-right {
-      text-align: right;
-    }
-
-    .footer-independent {
-      margin: 0;
-
-      color: #db002c;
-
-      font-size: 11px;
-      font-weight: 900;
-
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .footer-disclaimer {
-      margin: 4px 0 0;
-
-      color: rgba(16, 10, 98, 0.45);
-
-      font-size: 11px;
-    }
-
-
-    /* =========================================================
-       FOTO HERO
-       ========================================================= */
-    .hero {
-      position: absolute;
-
-      right: 0;
-      bottom: 0;
-
-      width: 420px;
-      height: 780px;
-
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-
-      pointer-events: none;
-
-      z-index: 5;
-    }
-
-    .hero img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: contain;
-      object-position: bottom center;
-    }
-
-
-/* =========================================================
-   EXPORTAÇÃO — LAYOUT FIXO 1080 x 1920
-   ========================================================= */
-.export-stories {
-  width: 1080px;
-  height: 1920px;
-  background: #fff;
-  position: relative;
-  overflow: hidden;
-  padding: 48px;
-  color: #100a62;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.export-stories *,
-.export-stories *::before,
-.export-stories *::after {
-  box-sizing: border-box;
-}
-
-.export-stories .main-card {
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  border: 4px solid #100a62;
-  border-radius: 40px;
-  padding: 40px;
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
-}
-
-.export-stories .header {
-  margin-bottom: 28px;
-  padding-bottom: 22px;
-}
-
-.export-stories .candidates-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--export-gap, 18px);
-  position: relative;
-  z-index: 3;
-}
-
-.export-stories #tmpl-candidates-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--export-gap, 18px);
-}
-
-.export-stories .candidate {
-  width: 100%;
-  flex: 0 0 auto;
-}
-
-.export-stories .candidate-title {
-  height: 30px;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.export-stories .candidate-rose {
-  width: 28px;
-  flex: 0 0 28px;
-  font-size: 22px;
-  line-height: 1;
-}
-
-.export-stories .candidate-position {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: var(--export-title-size, 25px);
-  line-height: 1;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: .3px;
-  white-space: nowrap;
-}
-
-.export-stories .candidate-subtitle {
-  margin: -4px 0 7px 35px;
-  font-size: 13px;
-  line-height: 1;
-  font-weight: 700;
-}
-
-.export-stories .candidate-body {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.export-stories .candidate-photo-stack {
-  width: 112px;
-  flex: 0 0 112px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.export-stories .candidate-photo-frame {
-  width: 112px;
-  height: 128px;
-  flex: 0 0 128px;
-  padding: 3px;
-  border-radius: 18px;
-  background: linear-gradient(135deg,#db002c 0%,#100a62 100%);
-}
-
-.export-stories .candidate-photo {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 15px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.export-stories .candidate-photo img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-}
-
-.export-stories .candidate-name {
-  width: 112px;
-  min-height: 30px;
-  margin-top: 6px;
-  color: #100a62;
-  font-size: 13px;
-  line-height: 1.08;
-  font-weight: 800;
-  text-align: center;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-.export-stories .vote-area {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.export-stories .numbers {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--export-number-gap, 10px);
-  min-width: 0;
-}
-
-.export-stories .number-box {
-  width: var(--export-number-size, 64px);
-  height: var(--export-number-height, 80px);
-  flex: 0 0 var(--export-number-size, 64px);
-  padding: 3px;
-  border-radius: 13px;
-  background: linear-gradient(135deg,#db002c 0%,#100a62 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.export-stories .number-inner {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  line-height: 1;
-}
-
-.export-stories .number-digit {
-  display: block;
-  width: 100%;
-  color: #100a62;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: var(--export-number-font, 44px);
-  line-height: 1;
-  font-weight: 900;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.export-stories .confirm {
-  margin-top: 8px;
-  min-width: 110px;
-  padding: 7px 18px;
-  border-radius: 8px;
-  background: #db002c;
-  color: #fff;
-  font-size: 13px;
-  line-height: 1;
-  font-weight: 900;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Foto de candidatura: canto inferior esquerdo */
-.export-stories .candidate-hero {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  width: 100%;
-  height: 470px;
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-
-  pointer-events: none;
-  z-index: 1;
-}
-
-.export-stories .candidate-hero img {
-  width: 270px;
-  height: 470px;
-  display: block;
-
-  object-fit: contain;
-  object-position: bottom right;
-}
-
-.export-stories .footer {
-  z-index: 6;
-}
-
-.export-stories.compact-1 .candidate-photo-frame {
-  width: 100px;
-  height: 114px;
-  flex-basis: 114px;
-}
-.export-stories.compact-1 .candidate-photo-stack,
-.export-stories.compact-1 .candidate-name {
-  width: 100px;
-  flex-basis: 100px;
-}
-.export-stories.compact-1 .candidate-body { gap: 22px; }
-.export-stories.compact-1 .candidate-position { font-size: 22px; }
-.export-stories.compact-1 .number-box {
-  width: 58px;
-  height: 72px;
-  flex-basis: 58px;
-}
-.export-stories.compact-1 .number-digit { font-size: 39px; }
-.export-stories.compact-1 .numbers { gap: 8px; }
-
-.export-stories.compact-2 .candidate-photo-frame {
-  width: 88px;
-  height: 100px;
-  flex-basis: 100px;
-}
-.export-stories.compact-2 .candidate-photo-stack,
-.export-stories.compact-2 .candidate-name {
-  width: 88px;
-  flex-basis: 88px;
-}
-.export-stories.compact-2 .candidate-body { gap: 18px; }
-.export-stories.compact-2 .candidate-position { font-size: 20px; }
-.export-stories.compact-2 .number-box {
-  width: 52px;
-  height: 64px;
-  flex-basis: 52px;
-}
-.export-stories.compact-2 .number-digit { font-size: 35px; }
-.export-stories.compact-2 .numbers { gap: 6px; }
-.export-stories.compact-2 .confirm { min-width: 94px; font-size: 11px; padding: 6px 12px; }
-
-.export-stories.compact-3 .candidate-title { margin-bottom: 5px; }
-.export-stories.compact-3 .candidate-rose { font-size: 19px; }
-.export-stories.compact-3 .candidate-position { font-size: 18px; }
-.export-stories.compact-3 .candidate-photo-frame {
-  width: 78px;
-  height: 88px;
-  flex-basis: 88px;
-}
-.export-stories.compact-3 .candidate-photo-stack,
-.export-stories.compact-3 .candidate-name {
-  width: 78px;
-  flex-basis: 78px;
-}
-.export-stories.compact-3 .candidate-name { font-size: 11px; }
-.export-stories.compact-3 .candidate-body { gap: 14px; }
-.export-stories.compact-3 .number-box {
-  width: 46px;
-  height: 58px;
-  flex-basis: 46px;
-  border-radius: 10px;
-}
-.export-stories.compact-3 .number-inner { border-radius: 7px; }
-.export-stories.compact-3 .number-digit { font-size: 31px; }
-.export-stories.compact-3 .numbers { gap: 5px; }
-.export-stories.compact-3 .confirm { min-width: 84px; font-size: 10px; padding: 5px 9px; }
-
-.export-photo-fallback {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(16,10,98,.40);
-  font-size: 14px;
-  font-weight: 800;
-}
 
   </style>
 </head>
@@ -1123,67 +278,400 @@
   </footer>
 
 
-<!-- CONTAINER DE RENDERIZAÇÃO DA COLINHA (1080x1920) -->
-<div id="export-render-host"
-     style="position:fixed;left:-12000px;top:0;width:1080px;height:1920px;overflow:hidden;pointer-events:none;">
-  <div id="stories-template" class="export-stories">
-  <div class="decoration-blue"></div>
-  <div class="decoration-red"></div>
-
-  <div class="main-card">
-    <header class="header">
-      <div class="header-number">12</div>
-      <div class="header-content">
-        <h1 class="header-title">Bacci Colinha 2026</h1>
-        <div class="header-line"></div>
-      </div>
-    </header>
-
-    <main class="candidates-list">
-      <section id="template-bacci-card" class="candidate">
-        <div class="candidate-title">
-          <span class="candidate-rose">🌹</span>
-          <span class="candidate-position">Dep. Federal</span>
-        </div>
-
-        <div class="candidate-body">
-          <div class="candidate-photo-stack">
-            <div class="candidate-photo-frame">
-              <div class="candidate-photo">
-                <img id="tmpl-bacci-photo" alt="Candidato">
-                <div id="tmpl-bacci-fallback" class="export-photo-fallback">FOTO</div>
-              </div>
-            </div>
-            <div id="tmpl-bacci-name" class="candidate-name">Reginaldo Bacci</div>
-          </div>
-
-          <div class="vote-area">
-            <div id="tmpl-bacci-numbers" class="numbers"></div>
-            <div class="confirm">CONFIRMA</div>
-          </div>
-        </div>
-      </section>
-
-      <div id="tmpl-candidates-list" class="candidates-list"></div>
-    </main>
-
-    <div class="candidate-hero">
-      <img src="reginaldo-bacci.png" alt="Candidato destaque">
-    </div>
-
-    <footer class="footer">
-      <div>
-        <p class="footer-title">Colinha Eleitoral Personalizada</p>
-        <p class="footer-text">Exercício do direito de voto • RS 2026</p>
-      </div>
-
-    </footer>
-  </div>
-</div>
-</div>
-
   <!-- LÓGICA E JAVASCRIPT DA APLICAÇÃO -->
   <script>
+/* =========================================================================
+   RENDERIZADOR DA COLINHA — Canvas 2D, 1080 x 1920 (Stories)
+   -------------------------------------------------------------------------
+   Por que Canvas e não html2canvas?
+   O html2canvas "re-desenha" o DOM por conta própria e erra a posição do
+   texto quando line-height < altura de conteúdo da fonte (é o caso da
+   Anton: ascent+descent ≈ 1.5em). Aqui cada elemento é posicionado por
+   medidas reais da fonte (actualBoundingBoxAscent), então o resultado é
+   idêntico em qualquer navegador/dispositivo.
+   ========================================================================= */
+const COLINHA = {
+  W: 1080,
+  H: 1920,
+  ANTON: "'Anton','Impact','Arial Narrow',sans-serif",
+  MONT: "'Montserrat','Segoe UI',Arial,sans-serif",
+  NAVY: '#0a2049',
+  GREEN: '#0b8a2f',
+  RED: '#d8261c',
+  YELLOW: '#f6c800',
+  ORANGE: '#ffb300'
+};
+
+/* ---------- utilitários ---------- */
+function cLoadImage(src) {
+  return new Promise((resolve) => {
+    if (!src) return resolve(null);
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => resolve(img);
+    img.onerror = () => resolve(null);
+    img.src = src;
+  });
+}
+
+async function cEnsureFonts() {
+  if (!document.fonts || !document.fonts.load) return;
+  const sample = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÂÊÔÃÕÇ0123456789·º';
+  try {
+    await Promise.all([
+      document.fonts.load('400 100px Anton', sample),
+      document.fonts.load('600 26px Montserrat', sample),
+      document.fonts.load('italic 600 26px Montserrat', sample),
+      document.fonts.load('700 18px Montserrat', sample),
+      document.fonts.load('800 24px Montserrat', sample),
+      document.fonts.load('900 24px Montserrat', sample)
+    ]);
+    await document.fonts.ready;
+  } catch (e) { /* segue com fallback */ }
+}
+
+function cFont(o) {
+  return `${o.style || 'normal'} ${o.weight || 400} ${o.size}px ${o.family}`;
+}
+
+/* largura do texto (com espaçamento entre letras manual, sem depender de ctx.letterSpacing) */
+function cWidth(ctx, text, o) {
+  ctx.font = cFont(o);
+  const sp = o.spacing || 0;
+  if (!sp) return ctx.measureText(text).width;
+  let w = 0;
+  const chars = Array.from(text);
+  chars.forEach((ch) => { w += ctx.measureText(ch).width; });
+  return w + sp * Math.max(0, chars.length - 1);
+}
+
+/* altura de maiúscula/dígito real da fonte carregada */
+function cCap(ctx, o, ref) {
+  ctx.font = cFont(o);
+  return ctx.measureText(ref || 'H').actualBoundingBoxAscent;
+}
+
+/* desenha texto; y = LINHA DE BASE. align: left | center | right */
+function cText(ctx, text, x, y, o) {
+  ctx.font = cFont(o);
+  ctx.fillStyle = o.color || '#000';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
+  const w = cWidth(ctx, text, o);
+  let sx = x;
+  if (o.align === 'center') sx = x - w / 2;
+  else if (o.align === 'right') sx = x - w;
+  if (!o.spacing) {
+    ctx.fillText(text, sx, y);
+  } else {
+    let cx = sx;
+    Array.from(text).forEach((ch) => {
+      ctx.fillText(ch, cx, y);
+      cx += ctx.measureText(ch).width + o.spacing;
+    });
+  }
+  return w;
+}
+
+/* reduz o corpo da fonte até caber em maxW */
+function cFit(ctx, text, o, maxW, minRatio = 0.55) {
+  let size = o.size;
+  const min = o.size * minRatio;
+  while (size > min && cWidth(ctx, text, { ...o, size }) > maxW) size -= 1;
+  return { ...o, size };
+}
+
+/* corta com reticências se ainda passar da largura */
+function cEllipsis(ctx, text, o, maxW) {
+  if (cWidth(ctx, text, o) <= maxW) return text;
+  let t = text;
+  while (t.length > 1 && cWidth(ctx, t + '…', o) > maxW) t = t.slice(0, -1);
+  return t.trimEnd() + '…';
+}
+
+/* retângulo com cantos arredondados (r: número ou [tl,tr,br,bl]) */
+function cRR(ctx, x, y, w, h, r) {
+  const [tl, tr, br, bl] = Array.isArray(r) ? r : [r, r, r, r];
+  ctx.beginPath();
+  ctx.moveTo(x + tl, y);
+  ctx.lineTo(x + w - tr, y);
+  ctx.arcTo(x + w, y, x + w, y + tr, tr);
+  ctx.lineTo(x + w, y + h - br);
+  ctx.arcTo(x + w, y + h, x + w - br, y + h, br);
+  ctx.lineTo(x + bl, y + h);
+  ctx.arcTo(x, y + h, x, y + h - bl, bl);
+  ctx.lineTo(x, y + tl);
+  ctx.arcTo(x, y, x + tl, y, tl);
+  ctx.closePath();
+}
+
+/* foto no estilo object-fit:cover + object-position: top */
+function cDrawCover(ctx, img, x, y, w, h, alignTop = true) {
+  const s = Math.max(w / img.width, h / img.height);
+  const dw = img.width * s;
+  const dh = img.height * s;
+  const dx = x + (w - dw) / 2;
+  const dy = alignTop ? y : y + (h - dh) / 2;
+  ctx.drawImage(img, dx, dy, dw, dh);
+}
+
+function cPhoto(ctx, img, x, y, w, h, radius, borderColor, border) {
+  ctx.save();
+  if (border) {
+    cRR(ctx, x, y, w, h, radius);
+    ctx.fillStyle = borderColor;
+    ctx.fill();
+    x += border; y += border; w -= border * 2; h -= border * 2;
+    radius = Math.max(0, radius - border);
+  }
+  cRR(ctx, x, y, w, h, radius);
+  ctx.clip();
+  ctx.fillStyle = '#dfe6f3';
+  ctx.fillRect(x, y, w, h);
+  if (img) {
+    cDrawCover(ctx, img, x, y, w, h, true);
+  } else {
+    // silhueta neutra quando não há foto
+    ctx.fillStyle = '#b6c2da';
+    ctx.beginPath();
+    ctx.arc(x + w / 2, y + h * 0.38, w * 0.2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.ellipse(x + w / 2, y + h * 0.98, w * 0.38, h * 0.32, 0, Math.PI, 0);
+    ctx.fill();
+  }
+  ctx.restore();
+}
+
+/* bloco "número + CONFIRMA", alinhado à direita e centralizado verticalmente */
+function cVote(ctx, digits, rightX, midY, s) {
+  const list = Array.from(String(digits));
+  const digitsW = list.length * s.bw + (list.length - 1) * s.gap;
+  const confO = { family: COLINHA.MONT, weight: 900, size: s.confSize, spacing: 2 };
+  const confTextW = cWidth(ctx, 'CONFIRMA', confO);
+  const barW = Math.max(digitsW, Math.ceil(confTextW + 28)); // a barra nunca é menor que o texto
+  const totalH = s.bh + s.confGap + s.confH;
+  const top = midY - totalH / 2;
+  const left = rightX - barW;
+  const startX = left + (barW - digitsW) / 2;
+
+  const dOpt = { family: COLINHA.ANTON, weight: 400, size: s.digitSize, color: COLINHA.NAVY, align: 'center' };
+  const dCap = cCap(ctx, dOpt, '0');
+
+  list.forEach((d, i) => {
+    const bx = startX + i * (s.bw + s.gap);
+    cRR(ctx, bx, top, s.bw, s.bh, s.radius);
+    ctx.fillStyle = COLINHA.NAVY;
+    ctx.fill();
+    cRR(ctx, bx + s.border, top + s.border, s.bw - s.border * 2, s.bh - s.border * 2, s.radius - s.border);
+    ctx.fillStyle = s.bg;
+    ctx.fill();
+    // dígito centralizado pela altura REAL do glifo
+    cText(ctx, d, bx + s.bw / 2, top + s.bh / 2 + dCap / 2, dOpt);
+  });
+
+  const barTop = top + s.bh + s.confGap;
+  cRR(ctx, left, barTop, barW, s.confH, 8);
+  ctx.fillStyle = COLINHA.GREEN;
+  ctx.fill();
+  const cCapH = cCap(ctx, confO, 'H');
+  cText(ctx, 'CONFIRMA', left + barW / 2, barTop + s.confH / 2 + cCapH / 2, { ...confO, color: '#fff', align: 'center' });
+
+  return { left, width: barW };
+}
+
+/* bloco de texto (categoria / nome / subtítulo) centralizado verticalmente na linha */
+function cTextBlock(ctx, r, x, midY, maxW, s) {
+  const labelO = { family: COLINHA.MONT, weight: 800, size: s.labelSize, spacing: 2.5, color: s.labelColor };
+  let nameO = { family: COLINHA.ANTON, weight: 400, size: s.nameSize, color: COLINHA.NAVY };
+  const subO = { family: COLINHA.MONT, weight: 700, size: s.subSize, color: '#4a5673' };
+
+  const name = String(r.name || '').toUpperCase();
+  nameO = cFit(ctx, name, nameO, maxW);
+  const sub = cEllipsis(ctx, String(r.sub || '').toUpperCase(), subO, maxW);
+
+  const labelCap = cCap(ctx, labelO);
+  const nameCap = cCap(ctx, nameO);
+  const subCap = cCap(ctx, subO);
+  const hasSub = !!sub;
+
+  const block = labelCap + s.g1 + nameCap + (hasSub ? s.g2 + subCap : 0);
+  const top = midY - block / 2;
+  const labelBase = top + labelCap;
+  const nameBase = labelBase + s.g1 + nameCap;
+  const subBase = nameBase + s.g2 + subCap;
+
+  const lw = cText(ctx, r.label, x, labelBase, labelO);
+
+  if (r.badge) {
+    const bO = { family: COLINHA.MONT, weight: 800, size: 15, spacing: 0.5, color: '#fff' };
+    const bw = cWidth(ctx, r.badge, bO) + 22;
+    const bh = 26;
+    const bx = x + lw + 14;
+    const by = labelBase - labelCap / 2 - bh / 2;
+    cRR(ctx, bx, by, bw, bh, bh / 2);
+    ctx.fillStyle = COLINHA.RED;
+    ctx.fill();
+    cText(ctx, r.badge, bx + bw / 2, by + bh / 2 + cCap(ctx, bO) / 2, { ...bO, align: 'center' });
+  }
+
+  cText(ctx, name, x, nameBase, nameO);
+  if (hasSub) cText(ctx, sub, x, subBase, subO);
+}
+
+/* ---------- desenho completo ---------- */
+async function renderColinhaCanvas(data) {
+  await cEnsureFonts();
+
+  const { W, H, ANTON, MONT, NAVY, YELLOW, ORANGE } = COLINHA;
+  const canvas = document.createElement('canvas');
+  canvas.width = W;
+  canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+
+  /* fundo */
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#0e2c63');
+  bg.addColorStop(1, '#071634');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  /* número gigante ao fundo (recortado pela borda, como no layout) */
+  const ghostO = { family: ANTON, weight: 400, size: 760, color: 'rgba(255,255,255,0.05)', align: 'right' };
+  cText(ctx, String(data.anchor.number || ''), W + 40, 60 + cCap(ctx, ghostO, '0'), ghostO);
+
+  /* foto principal com esmaecimento na base (máscara 84% → 100%) */
+  if (data.hero) {
+    const hw = 560;
+    const hh = Math.round(data.hero.height * (hw / data.hero.width));
+    const off = document.createElement('canvas');
+    off.width = hw;
+    off.height = hh;
+    const octx = off.getContext('2d');
+    octx.imageSmoothingQuality = 'high';
+    octx.drawImage(data.hero, 0, 0, hw, hh);
+    octx.globalCompositeOperation = 'destination-in';
+    const m = octx.createLinearGradient(0, 0, 0, hh);
+    m.addColorStop(0, '#000');
+    m.addColorStop(0.84, '#000');
+    m.addColorStop(1, 'rgba(0,0,0,0)');
+    octx.fillStyle = m;
+    octx.fillRect(0, 0, hw, hh);
+    ctx.drawImage(off, W - hw + 30, 150);
+  }
+
+  /* faixa tricolor no topo */
+  const stripe = (x, y, w, h) => {
+    ctx.fillStyle = COLINHA.GREEN; ctx.fillRect(x, y, w / 3, h);
+    ctx.fillStyle = COLINHA.RED;   ctx.fillRect(x + w / 3, y, w / 3, h);
+    ctx.fillStyle = YELLOW;        ctx.fillRect(x + (2 * w) / 3, y, w / 3, h);
+  };
+  stripe(0, 0, W, 12);
+
+  /* cabeçalho */
+  const kick = { family: MONT, weight: 800, size: 24, spacing: 3, color: '#fff' };
+  cText(ctx, data.kicker || 'CANDIDATO A DEPUTADO FEDERAL', 46, 184 + cCap(ctx, kick), kick);
+
+  cText(ctx, data.slogan || 'Experiência que Transforma. Ética que Liberta.', 46, 250,
+    { family: MONT, weight: 600, style: 'italic', size: 26, color: '#fff' });
+
+  const nameO = { family: ANTON, weight: 400, size: 132, color: '#fff' };
+  const nameCap = cCap(ctx, nameO);
+  const nameBase = 300 + nameCap;
+  cText(ctx, data.anchor.short || 'BACCI', 44, nameBase, nameO);
+  stripe(46, nameBase + 18, 330, 14);
+
+  // título "MINHA COLINHA": reduz o corpo se a fonte for mais larga que o previsto
+  let titleA = { family: ANTON, weight: 400, size: 150, color: '#fff' };
+  const titleMax = W - 44 - 30;
+  while (titleA.size > 90 && cWidth(ctx, 'MINHA COLINHA', titleA) > titleMax) titleA = { ...titleA, size: titleA.size - 2 };
+  const titleB = { ...titleA, color: ORANGE };
+  const titleCap = cCap(ctx, titleA);
+  const titleBase = 500 + (cCap(ctx, { ...titleA, size: 150 }) || titleCap); // linha de base fixa
+  const wA = cText(ctx, 'MINHA', 44, titleBase, titleA);
+  cText(ctx, 'COLINHA', 44 + wA + cWidth(ctx, ' ', titleA) * 1.1, titleBase, titleB);
+
+  const dateO = { family: MONT, weight: 800, size: 30, spacing: 5, color: '#c9d6f2' };
+  cText(ctx, data.dateLine || '4 DE OUTUBRO · 6 VOTOS NA URNA', 46, titleBase + 22 + cCap(ctx, dateO), dateO);
+
+  /* cartão branco */
+  const cardX = 28, cardW = W - 56, cardTop = 706;
+  const hlH = 218, rowH = 132;
+  const cardH = 16 + (4 + hlH + 6) + data.rows.length * rowH + 14;
+
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,0.35)';
+  ctx.shadowBlur = 40;
+  ctx.shadowOffsetY = 14;
+  cRR(ctx, cardX, cardTop, cardW, cardH, 40);
+  ctx.fillStyle = '#fff';
+  ctx.fill();
+  ctx.restore();
+
+  /* linha destaque (Deputado Federal) */
+  const hlX = cardX + 10, hlY = cardTop + 16 + 4, hlW = cardW - 20;
+  cRR(ctx, hlX, hlY, hlW, hlH, 26);
+  ctx.fillStyle = YELLOW;
+  ctx.fill();
+  cRR(ctx, hlX + 14, hlY + 4, hlW - 18, hlH - 8, [12, 22, 22, 12]);
+  ctx.fillStyle = '#fff3c4';
+  ctx.fill();
+
+  const hlMid = hlY + hlH / 2;
+  const hlPhotoW = 158, hlPhotoH = 186;
+  const hlPhotoX = hlX + 14 + 12;
+  cPhoto(ctx, data.anchor.photo, hlPhotoX, hlMid - hlPhotoH / 2, hlPhotoW, hlPhotoH, 16, NAVY, 4);
+
+  const hlRight = hlX + hlW - 4 - 16;
+  const hlVote = cVote(ctx, data.anchor.number, hlRight, hlMid, {
+    bw: 66, bh: 90, gap: 6, border: 4, radius: 10, bg: YELLOW,
+    digitSize: 72, confSize: 19, confH: 30, confGap: 10
+  });
+  const hlTextX = hlPhotoX + hlPhotoW + 24;
+  cTextBlock(ctx, {
+    label: 'DEPUTADO FEDERAL',
+    name: data.anchor.short || 'BACCI',
+    sub: data.anchor.sub
+  }, hlTextX, hlMid, hlVote.left - 24 - hlTextX,
+  { labelSize: 25, labelColor: '#a27400', nameSize: 106, subSize: 22, g1: 20, g2: 18 });
+
+  /* demais linhas */
+  const rowsTop = hlY + hlH + 6;
+  const inX = cardX + 26, inRight = cardX + cardW - 26;
+  data.rows.forEach((r, i) => {
+    const y = rowsTop + i * rowH;
+    const mid = y + rowH / 2;
+
+    cPhoto(ctx, r.photo, inX, mid - 58, 100, 116, 12);
+
+    const vote = cVote(ctx, r.number, inRight, mid, {
+      bw: 46, bh: 62, gap: 6, border: 4, radius: 10, bg: '#fff',
+      digitSize: 48, confSize: 15, confH: 22, confGap: 8
+    });
+    const tx = inX + 100 + 22;
+    cTextBlock(ctx, r, tx, mid, vote.left - 24 - tx,
+      { labelSize: 21, labelColor: '#5b6784', nameSize: 56, subSize: 18, g1: 13, g2: 11 });
+
+    if (i < data.rows.length - 1) {
+      ctx.fillStyle = '#dde3ef';
+      ctx.fillRect(inX, y + rowH - 2, inRight - inX, 2);
+    }
+  });
+
+  /* rodapé */
+  const footTop = Math.max(1670, cardTop + cardH + 46);
+  const f1 = { family: MONT, weight: 900, size: 26, color: '#fff', align: 'center' };
+  const f2 = { family: MONT, weight: 900, size: 30, color: YELLOW, align: 'center' };
+  const f1Fit = cFit(ctx, data.footer1 || 'CELULAR NÃO ENTRA NA CABINE. LEVE A COLINHA NO PAPEL.', f1, W - 80);
+  cText(ctx, data.footer1 || 'CELULAR NÃO ENTRA NA CABINE. LEVE A COLINHA NO PAPEL.', W / 2, footTop + cCap(ctx, f1Fit), f1Fit);
+  cText(ctx, data.footer2 || 'Monte a sua também!', W / 2, footTop + 26 + 30 + cCap(ctx, f2), f2);
+
+  return canvas;
+}
+
+
     // Configuração dos Cargos a preencher na ordem oficial de votação da urna
     // (Deputado Federal fica de fora: já é o candidato âncora fixo abaixo)
     const OFFICES_CONFIG = [
@@ -1595,214 +1083,67 @@
           return null;
         }
       }
+      // Gera a imagem 1080x1920 desenhando direto no Canvas (sem html2canvas)
       async generateExport() {
         this.goToStep('export');
 
         const loading = document.getElementById('export-loading');
         const resultImg = document.getElementById('export-image-result');
-
         loading?.classList.remove('hidden');
         resultImg?.classList.add('hidden');
         this.generatedBlob = null;
 
-        const bacci = this.colinhaState.DEPUTADO_FEDERAL;
-        const bacciNumbers = document.getElementById('tmpl-bacci-numbers');
-        const bacciPhoto = document.getElementById('tmpl-bacci-photo');
-        const bacciFallback = document.getElementById('tmpl-bacci-fallback');
+        try {
+          const toImage = async (url) => cLoadImage(await this.getBase64Image(url));
 
-        if (bacciNumbers) {
-          bacciNumbers.innerHTML = this.buildExportNumbers(bacci?.number);
-        }
+          const bacci = this.colinhaState.DEPUTADO_FEDERAL;
+          const bacciParty = bacci?.party?.acronym && bacci.party.acronym !== '---' ? bacci.party.acronym : '';
+          const anchor = {
+            short: 'BACCI',
+            number: String(bacci?.number || '1245'),
+            sub: [bacciParty, `Nº ${bacci?.number || '1245'}`].filter(Boolean).join(' · '),
+            photo: await toImage(bacci?.photoUrl)
+          };
 
-        if (bacciPhoto) {
-          bacciPhoto.removeAttribute('src');
-          bacciPhoto.style.display = 'none';
-        }
-        bacciFallback?.classList.remove('hidden');
+          const LABELS = {
+            DEPUTADO_ESTADUAL: { label: 'DEPUTADO ESTADUAL' },
+            SENADOR_1: { label: 'SENADO · 1º VOTO', badge: 'VOTE NOS DOIS' },
+            SENADOR_2: { label: 'SENADO · 2º VOTO' },
+            GOVERNADOR: { label: 'GOVERNADOR' },
+            PRESIDENTE: { label: 'PRESIDENTE' }
+          };
 
-        const bacciName = document.getElementById('tmpl-bacci-name');
-        if (bacciName) {
-          bacciName.textContent = bacci?.name || 'Reginaldo Bacci';
-        }
-
-        if (bacci?.photoUrl && bacciPhoto) {
-          const photo = await this.getBase64Image(bacci.photoUrl);
-          if (photo) {
-            bacciPhoto.src = photo;
-            bacciPhoto.style.display = 'block';
-            bacciFallback?.classList.add('hidden');
-          }
-        }
-
-        const listContainer = document.getElementById('tmpl-candidates-list');
-        if (listContainer) {
-          listContainer.innerHTML = '';
-
+          const rows = [];
           for (const cfg of OFFICES_CONFIG) {
             const cand = this.colinhaState[cfg.id];
             if (!cand) continue;
-
-            const photoBase64 = cand.photoUrl
-              ? await this.getBase64Image(cand.photoUrl)
-              : null;
-
-            const section = document.createElement('section');
-            section.className = 'candidate';
-
-            const position = cfg.title
-              .replace(' (1º Voto)', '')
-              .replace(' (2º Voto)', '');
-
-            const subtitle =
-              cfg.id === 'SENADOR_1' ? '<div class="candidate-subtitle">1º voto</div>' :
-              cfg.id === 'SENADOR_2' ? '<div class="candidate-subtitle">2º voto</div>' :
-              '';
-
-            section.innerHTML = `
-              <div class="candidate-title">
-                <span class="candidate-rose">🌹</span>
-                <span class="candidate-position">${this.escapeHtml(position)}</span>
-              </div>
-
-              ${subtitle}
-
-              <div class="candidate-body">
-                <div class="candidate-photo-stack">
-                  <div class="candidate-photo-frame">
-                    <div class="candidate-photo">
-                      ${
-                        photoBase64
-                          ? `<img src="${photoBase64}" alt="Candidato">`
-                          : `<div class="export-photo-fallback">FOTO</div>`
-                      }
-                    </div>
-                  </div>
-                  <div class="candidate-name">${this.escapeHtml(cand.name || 'Candidato')}</div>
-                </div>
-
-                <div class="vote-area">
-                  <div class="numbers">
-                    ${this.buildExportNumbers(cand.number)}
-                  </div>
-                  <div class="confirm">CONFIRMA</div>
-                </div>
-              </div>
-            `;
-
-            listContainer.appendChild(section);
+            const party = cand.party?.acronym && cand.party.acronym !== '---' ? cand.party.acronym : '';
+            rows.push({
+              ...LABELS[cfg.id],
+              name: cand.name || 'Candidato',
+              sub: [party, cand.extra].filter(Boolean).join(' · '),
+              number: String(cand.number || ''),
+              photo: cand.photoUrl ? await toImage(cand.photoUrl) : null
+            });
           }
-        }
 
-        this.fitExportLayout();
+          const hero = await cLoadImage('reginaldo-bacci.png');
+          const canvas = await renderColinhaCanvas({ anchor, hero, rows });
 
-        if (document.fonts?.ready) {
-          await document.fonts.ready;
-        }
-
-        // Fontes podem alterar as medidas; recalcula uma segunda vez antes do canvas.
-        this.fitExportLayout();
-
-        const target = document.getElementById('stories-template');
-        if (!target) {
-          throw new Error('Template da colinha não encontrado.');
-        }
-
-        const images = Array.from(target.querySelectorAll('img'));
-        await Promise.all(images.map(img => {
-          if (img.complete) return Promise.resolve();
-          return new Promise(resolve => {
-            img.addEventListener('load', resolve, { once: true });
-            img.addEventListener('error', resolve, { once: true });
-          });
-        }));
-
-        try {
-          const canvas = await html2canvas(target, {
-            width: 1080,
-            height: 1920,
-            scale: 1,
-            useCORS: true,
-            allowTaint: false,
-            backgroundColor: '#ffffff',
-            imageTimeout: 15000,
-            logging: false,
-            scrollX: 0,
-            scrollY: 0,
-            windowWidth: 1080,
-            windowHeight: 1920
-          });
-
-          const blob = await new Promise(resolve =>
-            canvas.toBlob(resolve, 'image/png')
-          );
-
-          if (!blob) {
-            throw new Error('Não foi possível criar o PNG.');
-          }
+          const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+          if (!blob) throw new Error('Não foi possível criar o PNG.');
 
           this.generatedBlob = blob;
-
-          const imgUrl = URL.createObjectURL(blob);
           if (resultImg) {
-            resultImg.src = imgUrl;
+            resultImg.src = URL.createObjectURL(blob);
             resultImg.classList.remove('hidden');
           }
-
           loading?.classList.add('hidden');
         } catch (err) {
           console.error('Erro na geração da imagem:', err);
           loading?.classList.add('hidden');
           alert('Erro ao gerar a imagem da colinha. Tente novamente.');
         }
-      }
-
-      fitExportLayout() {
-        const target = document.getElementById('stories-template');
-        const list = target?.querySelector('.candidates-list');
-        const dynamicList = document.getElementById('tmpl-candidates-list');
-        if (!target || !list || !dynamicList) return;
-
-        target.classList.remove('compact-1', 'compact-2', 'compact-3');
-        target.style.setProperty('--export-gap', '18px');
-
-        const modes = ['', 'compact-1', 'compact-2', 'compact-3'];
-        for (const mode of modes) {
-          target.classList.remove('compact-1', 'compact-2', 'compact-3');
-          if (mode) target.classList.add(mode);
-
-          const footer = target.querySelector('.footer');
-          const listTop = list.getBoundingClientRect().top;
-          const footerTop = footer?.getBoundingClientRect().top || 0;
-          const available = footerTop - listTop - 16;
-          const children = Array.from(list.children);
-          const totalHeight = children.reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
-          const gaps = Math.max(0, children.length - 1);
-          const gap = gaps ? Math.floor((available - totalHeight) / gaps) : 0;
-
-          if (gap >= 8) {
-            target.style.setProperty('--export-gap', `${Math.min(gap, 22)}px`);
-            return;
-          }
-        }
-
-        target.style.setProperty('--export-gap', '6px');
-      }
-
-      buildExportNumbers(number) {
-        const value = String(number || '').trim();
-        if (!value) return '';
-
-        const digits = value === 'BRANCO'
-          ? ['B', 'R', 'A', 'N', 'C', 'O']
-          : value.split('');
-
-        return digits.map(digit => `
-          <div class="number-box">
-            <div class="number-inner">
-              <span class="number-digit">${this.escapeHtml(digit)}</span>
-            </div>
-          </div>
-        `).join('');
       }
 
       escapeHtml(value) {
